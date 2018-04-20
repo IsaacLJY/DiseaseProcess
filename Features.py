@@ -128,12 +128,18 @@ def addFeatures(features, extra):
 
 
 #read the disease samples and get target string
+# targetStr = open("DiseaseSamples.txt", encoding="utf-8").read()
 targetStr = ""
 with open("DiseaseSamples.txt", encoding = 'utf-8') as f:
+    flag = False
     for line in f:
-        if "现病史" in line:
-            line.replace("现病史", "")
+        if ("主诉：" in line or "主 诉：" in line) and not flag:
+            flag = True
+        if "初步诊断：" in line:
+            flag = False
+        if flag:
             targetStr += line
+
 
 
 #load user dict
@@ -183,11 +189,3 @@ for f in features:
     file.write(f+"\n")
 file.close()
 print("writing features complete")
-
-
-
-
-
-
-
-
