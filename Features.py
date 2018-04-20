@@ -176,3 +176,18 @@ for w in roughFeatures:
         features.append(w)
 print(features)
 
+#write the features into file
+file = open("features.txt", "w+", encoding="utf-8")
+print("write features into features.txt ...")
+for f in features:
+    file.write(f+"\n")
+file.close()
+print("writing features complete")
+
+
+
+
+
+
+
+
