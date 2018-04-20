@@ -141,7 +141,7 @@ jieba.load_userdict("all_dict.txt")
 
 freFactor = 1
 wordsFre = removeNumAlphaSingle(vocaFre(targetStr))
-typeFactor = 2
+typeFactor = 3
 wordsType = removeNumAlphaSingle(vocaType(targetStr))
 txtFactor = 1
 wordsTxt = removeNumAlphaSingle(diffTxt(targetStr))
@@ -168,10 +168,11 @@ for w in wordstfidf:
     roughFeatures[w] = roughFeatures[w] + tfidfFactor
 
 #form the final features
+filter_cluster = open("all_dict_utf8.txt", encoding="utf-8").read()
+filter_abandon = open("filter_abandon.txt", encoding="utf-8").read()
 features = []
 for w in roughFeatures:
-    if roughFeatures[w] > 3:
+    if roughFeatures[w] > 3 and w in filter_cluster and w not in filter_abandon:
         features.append(w)
 print(features)
-
 
