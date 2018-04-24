@@ -182,6 +182,14 @@ for w in roughFeatures:
         features.append(w)
 print(features)
 
+# features2=[]
+# for w in roughFeatures:
+#     if roughFeatures[w] > 3 and w not in filter_abandon:
+#         features2.append(w)
+# print(features2)
+
+
+
 #write the features into file
 file = open("features.txt", "w+", encoding="utf-8")
 print("write features into features.txt ...")
@@ -189,3 +197,12 @@ for f in features:
     file.write(f+"\n")
 file.close()
 print("writing features complete")
+
+
+#write the features into file
+# file = open("features2.txt", "w+", encoding="utf-8")
+# print("write features2 into features2.txt ...")
+# for f in features2:
+#     file.write(f+"\n")
+# file.close()
+# print("writing features2 complete")
